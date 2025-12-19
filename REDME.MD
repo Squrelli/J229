@@ -9,11 +9,71 @@ for user: earning points, login and register
 for admin: Full admin panel with ability to create new user, read user data(passwords hidden for user privacy, but can be changed), updating user data ane deleting users.
 
 ## How to get started: 
-Run docker database (file docker.txt), in console type 
+
+### What you need: 
+
+Docker - preferably Docker Desktop 
+
+Git - optional
+
+Some kind of IDE like vsc
+
+### How to run:
+
+Create new folder and open Bash in this directory and type:
+
+    git clone https://github.com/Squrelli/J229.git
+
+Wait for files to download and type:
+
+    docker-compose up -d
+
+If all done corectly, open browser and go to https://localhost:3003, 
+
+### Login Data:
+
+#### Login: admin
+
+#### Password: admin
+
+Change login and password before deploying app to public.
+
+### How to stop the app
+
+    docker-compose down
+
+
+### Errors and fixes
+
+#### Port 3003 is occupied
+
+Simply change the port variable in docker-compose.yml
+
+#### Docker doesnt work
+
+Check if u have installed docker by using
+
+    docker --version
+    docker-compose --version
+
+#### You dont have git
+
+Download repository in zip file from github.com/Squrelli/J299, unpack in desire directory ale continue as normal.
+
+#### If you dont have docker
+
+Download node.js, MongoDB and the code 
+
+Install dependencies
+
+    npm install
+
+Start MongoDb localy 
+
+Run your app
 
     npm start
 
-and go to the link that the consol will give you 
 
 ## Endpoints:
 

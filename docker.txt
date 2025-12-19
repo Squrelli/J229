@@ -1,0 +1,20 @@
+Create new folder and open Bash in this directory and type:
+
+    git clone https://github.com/Squrelli/J229.git
+
+Wait for files to download and type:
+
+    docker-compose up -d
+
+If all done corectly, open browser and go to https://localhost:3003, 
+
+Ports: 
+MongoDb - mongodb://localhost:27017/projekt001 
+App - https://localhost:3003
+
+Login data
+
+Login: admin
+Password: admin
+
+Change login and password before deploying app to public as is's a major security and user data problem.git status
