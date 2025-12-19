@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width">
+        <title><%= title ? title : "" %></title>
+        <link rel="stylesheet" href="/css/style.css">
+    </head>
+    <body>
+        <%- include('../partials/header', {title: "User Profile"})  %>
+        <main>
+
+            <% if(user){ %>
+                <div class="block-spacing">
+                    <p><strong></strong> <%= user.username %></strong>(<%= user.age %>)  <%= "- " + user.country || '' %></p>
+                    <% if(isAdmin) { %>
+                        <p><strong>Role:</strong> <%= user.role || 'user' %></p>
+                    <% } %>
+                    
+                </div>
+
+                <% if(isOwnProfile) { %>
+                    <div id="pointsContainer">
+                        <%= user.points || 0 %>
+                    </div>
+                    <div class="clicker-container">
+                        <form action="/users/<%= user._id.toString() %>/add-point" method="POST" class="clicker-form">
+                            <button type="submit" class="clicker-button">
+                                Click Me!
+                            </button>
+                        </form>
+                    </div>
+                <% }else{ %>
+                   <p><strong>Points:</strong> <%= user.points || 0 %></p> 
+                   <p><small>ID: <%= user._id %> </small></p>
+                <% } %>
+                <div>
+                    <% if(isAdmin) { %>
+                        <a href="/users/<%= user._id %>/edit" class="redirect_link">Edit User</a> |
+                        <a href="/users" class="redirect_link">Back to List</a> |
+                    <% } %>
+                    <a href="/logout" class="redirect_link">Logout</a>
+                </div>
+            <% } else { %>
+                <p>User not found.</p>
+            <% } %>
+        </main>
+        <%- include('../partials/footer') %>
+    </body>
+</html>
+

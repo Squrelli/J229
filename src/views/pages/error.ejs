@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width">
+        <title>Error</title>
+        <link rel="stylesheet" href="/css/style.css">
+    </head>
+    <body>
+        <%- include('../partials/header', {title: "Error"})  %>
+        <main>
+
+            <p class="error"><%= error || "An error occurred" %></p>
+            <div class="top-spacing">
+                <a href="/users" class="redirect_link">Back to Users</a> |
+                <a href="/" class="redirect_link">Home</a>
+            </div>
+        </main>
+        <%- include('../partials/footer') %>
+    </body>
+</html>
+

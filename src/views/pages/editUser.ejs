@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width">
+        <title><%= title ? title : "" %></title>
+        <link rel="stylesheet" href="/css/style.css">
+    </head>
+    <body>
+        <%- include('../partials/header', {title: "Edit User"})  %>
+        <main>
+
+            <% if(errors && errors.length){ %>
+                <ul class="error">
+                    <% errors.forEach(e => { %>
+                        <li><%= e %></li>
+                    <% }) %>
+                </ul>
+            <% } %>
+            <form action="/users/<%= user._id %>/update" method="post">
+                <label for="username">Username</label>
+                <input type="text" name="username" id="username" value="<%= values.username || user.username %>" required><br>
+                <label for="password">Password (leave empty to keep current)</label>
+                <input type="password" name="password" id="password"><br>
+                <label for="age">Age</label>
+                <input type="number" name="age" id="age" value="<%= values.age || user.age %>" required><br>
+                <label for="points">Points</label>
+                <input type="number" name="points" id="points" value="<%= values.points || user.points || 0 %>" step="1" min="0" oninput="this.value = this.value.replace(/[eE]/g, '').replace(/\+/g, '').replace(/^-/, '')"><br>
+                <label for="country">Country</label>
+                <input type="text" name="country" id="country" value="<%= values.country || user.country || '' %>"><br>
+                <input type="checkbox" name="isAdmin" id="checkboxIsAdmin" <% if (user.role == "admin") { %> checked <% } %> > admin <br>
+                <button type="submit">Update</button>
+            </form>
+            
+            <div class="top-spacing">
+                <a href="/users/<%= user._id %>" class="redirect_link">Back to Profile</a> |
+                <a href="/users" class="redirect_link">Back to List</a>
+            </div>
+        </main>
+        <%- include('../partials/footer') %>
+    </body>
+</html>
+

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width">
+        <title><%= title ? title : "" %></title>
+        <link rel="stylesheet" href="/css/style.css">
+    </head>
+    <body>
+        <%- include('../partials/header', {title: "Login"})  %>
+        <main>
+            
+
+
+            <div id="content">
+                <% if(loginOrRegister){ %>
+                <form action="/login" method="POST" id="loginForm">
+                    <label for="username">Username</label>
+                    <input type="text" name="username" id="username" value="<%= values.username || ''%>"><br>
+                    <label for="password">Password</label>
+                    <input type="password" name="password" id="password" value="<%= values.password || ''%>"><br>
+                    <button type="submit">Log in</button>
+                </form>
+                <form action="/registerForm" method="get" class="switchToRegistrButtonForm">
+                    <input type="submit" value="Sign in" class="switchToRegistrButton">
+                </form>
+                <% }else{ %>
+                    <form action="/" method="get" class="switchToRegistrButtonForm">
+                        <input type="submit" value="Log in"  class="switchToRegistrButton">
+                    </form>
+                    <form action="/register" method="POST" id="registerForm">
+                        <label for="username">Username</label>
+                        <input type="text" name="username" id="username" value="<%= values.username || ''%>"><br>
+                        <label for="password">Password</label>
+                        <input type="password" name="password" id="password" value="<%= values.password || ''%>"><br>
+                        <label for="password">Repeat password</label>
+                        <input type="password" name="passwordRep" id="password" value="<%= values.password || ''%>"><br>
+                        <label for="age">Age</label>
+                        <input type="number" name="age" id="age" value="<%= values.age || ''%>" required><br>
+                        <label for="country">Country</label>
+                        <input type="text" name="country" id="country" value="<%= values.country || '' %>"><br>
+                        <button type="submit">Sign in</button>
+                    </form>
+
+                <% } %>
+
+            </div>
+                <% if(errors && errors.length){ %>
+                <ul class="error">
+                    <% errors.forEach(e => { %>
+                        <li><%= e %></li>
+                    <% }) %>
+                </ul>
+            <% } %>
+        </main>
+        <%- include('../partials/footer') %>
+    </body>
+</html>

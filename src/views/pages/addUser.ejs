@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width">
+        <title><%= title ? title : "" %></title>
+        <link rel="stylesheet" href="/css/style.css">
+    </head>
+    <body>
+        <%- include('../partials/header', {title: "Add new person"})  %>
+        <main>
+
+            <% if(errors && errors.length){ %>
+                <ul class="error">
+                    <% errors.forEach(e => { %>
+                        <li><%= e %></li>
+                    <% }) %>
+                </ul>
+            <% } %>
+            <form action="/addToDB" method="post">
+                <label for="username">Username</label>
+                <input type="text" name="username" id="username" value="<%= values.username || ''%>" required><br>
+                <label for="password">Password</label>
+                <input type="password" name="password" id="password" value="<%= values.password || ''%>" required><br>
+                <label for="age">Age</label>
+                <input type="number" name="age" id="age" value="<%= values.age || ''%>" required><br>
+                <label for="points">Points</label>
+                <input type="number" name="points" id="points" value="<%= values.points || 0 %>" step="1" min="0" oninput="this.value = this.value.replace(/[eE]/g, '').replace(/\+/g, '').replace(/^-/, '')"><br>
+                <label for="country">Country</label>
+                <input type="text" name="country" id="country" value="<%= values.country || '' %>"><br>
+                <input type="checkbox" name="isAdmin" id="checkboxIsAdmin"> admin <br>
+                <button type="submit" class="special-button-style">Dodaj</button>
+            </form>
+             <a href="/users" class="redirect_link">List of persons</a>
+        </main>
+        <%- include('../partials/footer') %>
+    </body>
+</html>

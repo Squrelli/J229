@@ -1,0 +1,18 @@
+{
+  "name": "projekt-na-2025.12.10",
+  "version": "1.0.0",
+  "description": "project with users ",
+  "main": "node src/server.js",
+  "scripts": {
+    "start": "node src/server.js"
+  },
+  "author": "Marek Sztuk",
+  "license": "MIT",
+  "dependencies": {
+    "bcrypt": "^5.1.1",
+    "ejs": "^3.1.10",
+    "express": "^5.2.1",
+    "express-session": "^1.18.2",
+    "mongodb": "^6.3.0"
+  }
+}
